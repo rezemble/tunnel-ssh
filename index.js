@@ -70,6 +70,7 @@ function createServer(config) {
             server.emit('error', error);
         }
     });
+    server.__defineGetter__('__connections', () => connections)
 
     server.on('close', function () {
         connections.forEach(function (connection) {
